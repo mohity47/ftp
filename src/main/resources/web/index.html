@@ -4,14 +4,37 @@
             Transfer Files Easily
         </title>
         <script src="/index.js"></script>
-        <style src="/index.css"></style>
+        <link rel="stylesheet" href="/index.css"></link>
     </head>
     <body>
-       <div class="header">
-           Transfer files instantly
-       </div>
-        <div class="create_otp not_connected">
-            Generate OTP
+        <div class="dashboard">
+            <div class="header">
+                Transfer files easily
+            </div>
+            <div class="user-type">
+                <div class="host" >Host</div>
+                <div class="guest">Connect</div>
+            </div>
+            <div class="not-connected host-actions hidden" >
+                <div class="create-otp btn">
+                    Generate OTP
+                </div>
+                <div class="hidden otp-container">
+                    <div class="otp"></div>
+                    <div class="desc">Please share this pin with your peer to connect</div>
+                </div>
+            </div>
+            <div class="connected hidden" >
+                You are now connected to your peer
+            </div>
+            <div class="guest-actions hidden">
+                <div class="otp-input" >
+                    <input type="text" >
+                </div>
+                <div class="connect" >
+                    
+                </div>
+            </div>
         </div>
     </body>
 </html>
