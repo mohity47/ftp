@@ -9,11 +9,11 @@
     <body>
         <div class="dashboard">
             <div class="header">
-                Transfer files easily
+                Share files
             </div>
             <div class="user-type">
-                <div class="host" >Host</div>
-                <div class="guest">Connect</div>
+                <div class="host btn" >Host</div>
+                <div class="guest btn">Connect</div>
             </div>
             <div class="not-connected host-actions hidden" >
                 <div class="create-otp btn">
@@ -24,15 +24,18 @@
                     <div class="desc">Please share this pin with your peer to connect</div>
                 </div>
             </div>
-            <div class="connected hidden" >
+            <div class="peer-connected hidden" >
                 You are now connected to your peer
             </div>
+            <div class="warning hidden" >
+                Incorrect Otp / User does not exist
+            </div>
             <div class="guest-actions hidden">
-                <div class="otp-input" >
-                    <input type="text" >
+                <div class="otp-input-box" >
+                    <input id="otp-input"type="text" >
                 </div>
                 <div class="connect" >
-                    
+                    Connect
                 </div>
             </div>
         </div>

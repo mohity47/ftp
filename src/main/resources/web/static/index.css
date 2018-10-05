@@ -60,5 +60,9 @@ body {
 }
 
 .host,.guest {
-    padding: auto;
+    height: 70px;
+    line-height: 70px;
+    background: #dedede;
+    margin: 20px 0px;
+    text-align: center;
 }

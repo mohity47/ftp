@@ -28,4 +28,13 @@ public class UserService {
         });
         return otp.toString();
     }
+
+    public Optional<UserInfo> getUserByOTP(int otp) {
+        return userRepository.findByOtp(otp);
+    }
+
+    public void connectUsers(UserInfo user1,UserInfo user2) {
+        user1.setConnectedTo(user2.getUserId());
+        userRepository.save(user1);
+    }
 }

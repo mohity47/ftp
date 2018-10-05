@@ -19,10 +19,6 @@ public class MainController {
     @Autowired
     private UserService userService;
 
-    MainController(UserService userService) {
-        this.userService = userService;
-    }
-
     //cookie management when directly comes to another page
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
@@ -38,11 +34,6 @@ public class MainController {
             response.addCookie(cookie);
         }
         return new ModelAndView("index");
-    }
-
-    @GetMapping("/connect")
-    @ResponseBody void connect() {
-
     }
 
 }
