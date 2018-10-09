@@ -7,35 +7,48 @@
         <link rel="stylesheet" href="/index.css"></link>
     </head>
     <body>
-        <div class="dashboard">
-            <div class="header">
-                Share files
-            </div>
-            <div class="user-type">
-                <div class="host btn" >Host</div>
-                <div class="guest btn">Connect</div>
-            </div>
-            <div class="not-connected host-actions hidden" >
-                <div class="create-otp btn">
-                    Generate OTP
+        <div class="wrapper">
+            <div class="connection-dashboard">
+                <div class="header">
+                    Share files
                 </div>
-                <div class="hidden otp-container">
-                    <div class="otp"></div>
-                    <div class="desc">Please share this pin with your peer to connect</div>
+                <div class="user-type">
+                    <div class="host btn" >Host</div>
+                    <div class="guest btn">Connect</div>
+                </div>
+                <div class="not-connected host-actions hidden" >
+                    <div class="create-otp btn">
+                        Generate OTP
+                    </div>
+                    <div class="hidden otp-container">
+                        <div class="otp"></div>
+                        <div class="desc">Please share this pin with your peer to connect</div>
+                    </div>
+                </div>
+                <div class="peer-connected hidden" >
+                    You are now connected to your peer
+                </div>
+                <div class="warning hidden" >
+                    Incorrect Otp / User does not exist
+                </div>
+                <div class="guest-actions hidden">
+                    <div class="otp-input-box" >
+                        <input id="otp-input"type="text" >
+                    </div>
+                    <div class="connect" >
+                        Connect
+                    </div>
                 </div>
             </div>
-            <div class="peer-connected hidden" >
-                You are now connected to your peer
-            </div>
-            <div class="warning hidden" >
-                Incorrect Otp / User does not exist
-            </div>
-            <div class="guest-actions hidden">
-                <div class="otp-input-box" >
-                    <input id="otp-input"type="text" >
+            <div class="chat-dashboard" >
+                <div class="header">
+                    Send Message
                 </div>
-                <div class="connect" >
-                    Connect
+                <div class="inbox" >
+                </div>
+                <div class="message-input-box">
+                    <input class="message" />
+                    <input type="button" class="send-message" value="Send"/>
                 </div>
             </div>
         </div>

@@ -1,13 +1,12 @@
 package com.ftp.controller;
 
 import com.ftp.Model.UserInfo;
-import com.ftp.Service.UserService;
+import com.ftp.dao.service.UserService;
 import com.ftp.utils.UserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Optional;
@@ -33,16 +32,16 @@ public class ApiController {
 
     @PostMapping("/connect")
     @ResponseBody String connect(HttpServletRequest request,
-                                 @RequestBody UserInfo user1) {
+                                 @RequestBody UserInfo user) {
         Long userId = userHelper.getUserIdFromCookies(request);
-        user1.setUserId(userId);
-        int otp = user1.getOtp();
+        Optional<UserInfo> user1 = userService.getUserById(userId);
+        int otp = user.getOtp();
         Optional<UserInfo>  user2 = userService.getUserByOTP(otp);
         String status;
         if(user2.isPresent()) {
             status = "true";
-            userService.connectUsers(user1,user2.get());
-            userService.connectUsers(user2.get(),user1);
+            userService.connectUsers(user1.get(),user2.get());
+            userService.connectUsers(user2.get(),user1.get());
         }
         else {
             status = "false";

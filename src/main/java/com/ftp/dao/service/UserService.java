@@ -1,11 +1,13 @@
-package com.ftp.Service;
+package com.ftp.dao.service;
 
 
 import com.ftp.Model.UserInfo;
+import com.ftp.dao.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class UserService {
@@ -36,5 +38,29 @@ public class UserService {
     public void connectUsers(UserInfo user1,UserInfo user2) {
         user1.setConnectedTo(user2.getUserId());
         userRepository.save(user1);
+    }
+
+    public void addSessionId(Long userId,String sessionId) {
+        Optional<UserInfo> user = userRepository.findById(userId);
+        user.ifPresent(u -> {
+            u.setSessionId(sessionId);
+            userRepository.save(u);
+        });
+    }
+
+    public String getRecepientSessionId(Long userId) {
+        Optional<UserInfo> userInfo = userRepository.findById(userId);
+        if( userInfo.isPresent() ){
+            Long rId = userInfo.get().getConnectedTo();
+            Optional<UserInfo> rInfo = userRepository.findById(rId);
+            if(rInfo.isPresent()) {
+                return rInfo.get().getSessionId();
+            }
+        }
+        return "";
+    }
+
+    public Optional<UserInfo> getUserById(Long userId) {
+        return userRepository.findById(userId);
     }
 }

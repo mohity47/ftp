@@ -14,7 +14,7 @@ body {
     background-size: 100% 100%;
 }
 
-.dashboard {
+.connection-dashboard, .chat-dashboard {
     align-items: center;
     margin: auto;
     width: 500px;
@@ -66,3 +66,60 @@ body {
     margin: 20px 0px;
     text-align: center;
 }
+
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.msg-from, .msg-to {
+    background: lightgrey;
+    width: max-content;
+    border: 1px solid lightslategray;
+    padding: 2px 5px;
+    font-size: 12px;
+    font-family: sans-serif;
+    border-radius: 2px;
+    clear: both;
+}
+
+
+.msg-to {
+    float: right;
+}
+
+.msg-from {
+    float: left;
+}
+
+.message-input-box {
+    width: 96%;
+    position: absolute;
+    bottom: 5px;
+}
+
+.message-input-box .message{
+    width: 79%;
+    left: 0;
+}
+
+.message-input-box .send-message {
+    width: 19%;
+    right: 0;
+}
+
+.chat-dashboard {
+    height: 400px;
+    position: relative;
+}
+
+.chat-dashboard .inbox {
+    height: 300px;
+    width: 100%;
+    background: white;
+}
+
+.inbox {
+    padding-top: 5px;
+}
+

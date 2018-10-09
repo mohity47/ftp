@@ -42,5 +42,47 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.send(JSON.stringify(data));
     });
 
+    document.getElementsByClassName("send-message")[0].addEventListener("click", () => {
+        sendMessage();
+    })
 
-})
+});
+
+const baseSockUrl = "ws://localhost:8000";
+var chatSocketUrl = baseSockUrl + "/chat/connect";
+var fileSocketUrl = baseSockUrl + "/file/connect";
+const chatSocket = new WebSocket(chatSocketUrl);
+const fileSocket = new WebSocket(fileSocketUrl);
+
+chatSocket.addEventListener("open", function(event) {
+    console.log("connected to server", event);
+});
+chatSocket.addEventListener('message', function (event) {
+    handleMessageReceived(JSON.parse(event.data));
+});
+
+function sendMessage() {
+    var inputBox = document.querySelector(".message-input-box .message");
+    var msg = inputBox.value;
+    var message = document.createElement("div");
+    message.classList.add("msg-to");
+    message.innerText = msg;
+    var inbox = document.getElementsByClassName("inbox")[0];
+    inbox.appendChild(message);
+    inputBox.value = "";
+    var data = {
+        message: msg
+    }
+    chatSocket.send(JSON.stringify(data));
+}
+
+function handleMessageReceived(rmsg) {
+        var msg = rmsg.message;
+        var message = document.createElement("div");
+        message.classList.add("msg-from");
+        message.innerText = msg;
+        var inbox = document.getElementsByClassName("inbox")[0];
+        inbox.appendChild(message);
+}
+
+

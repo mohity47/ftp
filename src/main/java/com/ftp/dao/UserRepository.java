@@ -1,4 +1,4 @@
-package com.ftp.Service;
+package com.ftp.dao;
 
 import com.ftp.Model.UserInfo;
 import org.springframework.data.repository.CrudRepository;

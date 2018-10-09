@@ -1,6 +1,7 @@
 package com.ftp.Model;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity(name = "user_info")
 public class UserInfo {
@@ -8,22 +9,33 @@ public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    Long userId;
+    private Long userId;
 
     @Column(name = "otp")
-    Integer otp;
+    private Integer otp;
 
     @Column(name = "public_key")
-    String publicKey;
+    private String publicKey;
 
     @Column(name = "private_key")
-    String privateKey;
+    private String privateKey;
 
     @Column(name = "connected_to")
-    Long connectedTo;
+    private Long connectedTo;
 
     @Column(name = "user_name")
-    String userName = "";
+    private String userName = "";
+
+    @Column(name = "session_id")
+    private String sessionId;
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String session_id) {
+        this.sessionId = session_id;
+    }
 
     public String getUserName() {
         return userName;
